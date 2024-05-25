@@ -1,35 +1,14 @@
-import { FaPhoneAlt } from "react-icons/fa";
-import { FaUser } from "react-icons/fa6";
-import c from "./Contact.module.css";
-
 import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contactsOps";
+import s from "./Contact.module.css";
+import { deleteContactThunk } from "../../redux/contacts/operations";
 
-const Contact = ({ contact: { number, name, id } }) => {
+const Contact = ({ contact }) => {
   const dispatch = useDispatch();
-
-  const handleDeleteContact = (id) => {
-    dispatch(deleteContact(id));
-  };
-
   return (
-    <li className={c.item}>
-      <div>
-        <p>
-          <FaUser />
-          {name}
-        </p>
-        <p>
-          <FaPhoneAlt />
-          {number}
-        </p>
-      </div>
-
-      <button
-        type="button"
-        onClick={() => handleDeleteContact(id)}
-        className={c.button}
-      >
+    <li className={s.item}>
+      <h3>Name: {contact.name}</h3>
+      <p>Tel: {contact.number}</p>
+      <button onClick={() => dispatch(deleteContactThunk(contact.id))}>
         Delete
       </button>
     </li>
