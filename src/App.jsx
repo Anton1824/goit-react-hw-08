@@ -3,12 +3,13 @@ import { Suspense, lazy, useEffect } from "react";
 import { refreshThunk } from "./redux/auth/operations";
 import { Route, Routes } from "react-router-dom";
 import { RestrictedRoute } from "./routes/RestrictedRoute";
-import { PrivateRoute } from "./routes/PrivateRoute";
+
 import HomePage from "./pages/HomePage/HomePage";
 import Layout from "./components/Layout/Layout";
 import Loader from "./components/Loader/Loader";
 import { selectIsRefreshing } from "./redux/auth/slice";
 import { Toaster } from "react-hot-toast";
+import { PrivateRoute } from "./routes/PrivateRoute";
 
 const RegistrationPage = lazy(() =>
   import("./pages/RegistrationPage/RegistrationPage")
